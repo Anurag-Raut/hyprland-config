@@ -93,131 +93,123 @@ hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true }) -- Move
 hl.bind("SUPER + mouse:274", hl.dsp.window.drag(), { mouse = true }) -- [hidden]
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true }) -- Resize
 --/# bind = Super, ←/↑/→/↓,,
-hl.bind("SUPER + Left", hl.dsp.exec_cmd("hyprctl dispatch movefocus l")) -- [hidden]
-hl.bind("SUPER + Right", hl.dsp.exec_cmd("hyprctl dispatch movefocus r")) -- [hidden]
-hl.bind("SUPER + Up", hl.dsp.exec_cmd("hyprctl dispatch movefocus u")) -- [hidden]
-hl.bind("SUPER + Down", hl.dsp.exec_cmd("hyprctl dispatch movefocus d")) -- [hidden]
-hl.bind("SUPER + BracketLeft", hl.dsp.exec_cmd("hyprctl dispatch movefocus l")) -- [hidden]
-hl.bind("SUPER + BracketRight", hl.dsp.exec_cmd("hyprctl dispatch movefocus r")) -- [hidden]
+hl.bind("SUPER + Left", hl.dsp.focus({ direction = "l" })) -- [hidden]
+hl.bind("SUPER + Right", hl.dsp.focus({ direction = "r" })) -- [hidden]
+hl.bind("SUPER + Up", hl.dsp.focus({ direction = "u" })) -- [hidden]
+hl.bind("SUPER + Down", hl.dsp.focus({ direction = "d" })) -- [hidden]
+hl.bind("SUPER + BracketLeft", hl.dsp.focus({ direction = "l" })) -- [hidden]
+hl.bind("SUPER + BracketRight", hl.dsp.focus({ direction = "r" })) -- [hidden]
 --/# bind = Super+Shift, ←/↑/→/↓,,
-hl.bind("SUPER + SHIFT + Left", hl.dsp.exec_cmd("hyprctl dispatch movewindow l")) -- [hidden]
-hl.bind("SUPER + SHIFT + Right", hl.dsp.exec_cmd("hyprctl dispatch movewindow r")) -- [hidden]
-hl.bind("SUPER + SHIFT + Up", hl.dsp.exec_cmd("hyprctl dispatch movewindow u")) -- [hidden]
-hl.bind("SUPER + SHIFT + Down", hl.dsp.exec_cmd("hyprctl dispatch movewindow d")) -- [hidden]
-hl.bind("ALT + F4", hl.dsp.exec_cmd("hyprctl dispatch killactive")) -- [hidden] Close (Windows)
-hl.bind("SUPER + Q", hl.dsp.exec_cmd("hyprctl dispatch killactive")) -- Close
+hl.bind("SUPER + SHIFT + Left", hl.dsp.window.move({ direction = "l" })) -- [hidden]
+hl.bind("SUPER + SHIFT + Right", hl.dsp.window.move({ direction = "r" })) -- [hidden]
+hl.bind("SUPER + SHIFT + Up", hl.dsp.window.move({ direction = "u" })) -- [hidden]
+hl.bind("SUPER + SHIFT + Down", hl.dsp.window.move({ direction = "d" })) -- [hidden]
+hl.bind("ALT + F4", hl.dsp.window.close()) -- [hidden] Close (Windows)
+hl.bind("SUPER + Q", hl.dsp.window.close()) -- Close
 hl.bind("SUPER + SHIFT + ALT + Q", hl.dsp.exec_cmd("hyprctl kill")) -- Forcefully zap a window
 
 
 -- Window split ratio
 --/# binde = Super, ;/',,
-hl.bind("SUPER + Semicolon", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg splitratio -0.1"), { repeating = true }) -- [hidden]
-hl.bind("SUPER + Apostrophe", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg splitratio +0.1"), { repeating = true }) -- [hidden]
+hl.bind("SUPER + Semicolon", hl.dsp.layout("splitratio -0.1"), { repeating = true }) -- [hidden]
+hl.bind("SUPER + Apostrophe", hl.dsp.layout("splitratio +0.1"), { repeating = true }) -- [hidden]
 -- Positioning mode
-hl.bind("SUPER + ALT + Space", hl.dsp.exec_cmd("hyprctl dispatch togglefloating")) -- Float/Tile
-hl.bind("SUPER + D", hl.dsp.exec_cmd("hyprctl dispatch fullscreen 1")) -- Maximize
-hl.bind("SUPER + F", hl.dsp.exec_cmd("hyprctl dispatch fullscreen 0")) -- Fullscreen
-hl.bind("SUPER + ALT + F", hl.dsp.exec_cmd("hyprctl dispatch fullscreenstate 0 3")) -- Fullscreen spoof
-hl.bind("SUPER + P", hl.dsp.exec_cmd("hyprctl dispatch pin")) -- Pin
+hl.bind("SUPER + ALT + Space", hl.dsp.window.float()) -- Float/Tile
+hl.bind("SUPER + D", hl.dsp.window.fullscreen({ mode = "1" })) -- Maximize
+hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "0" })) -- Fullscreen
+hl.bind("SUPER + ALT + F", hl.dsp.window.fullscreen_state({ internal = 0, client = 3 })) -- Fullscreen spoof
+hl.bind("SUPER + P", hl.dsp.window.pin()) -- Pin
 
 --/# bind = Super+Alt, Hash,,
 -- We use raw keycodes because some keyboard layouts register number keys as different chars. The codes can be verified with `wev`
-hl.bind("SUPER + ALT + code:10", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 1")) -- [hidden]
-hl.bind("SUPER + ALT + code:11", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 2")) -- [hidden]
-hl.bind("SUPER + ALT + code:12", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 3")) -- [hidden]
-hl.bind("SUPER + ALT + code:13", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 4")) -- [hidden]
-hl.bind("SUPER + ALT + code:14", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 5")) -- [hidden]
-hl.bind("SUPER + ALT + code:15", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 6")) -- [hidden]
-hl.bind("SUPER + ALT + code:16", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 7")) -- [hidden]
-hl.bind("SUPER + ALT + code:17", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 8")) -- [hidden]
-hl.bind("SUPER + ALT + code:18", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 9")) -- [hidden]
-hl.bind("SUPER + ALT + code:19", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 10")) -- [hidden]
+-- Numbers map to workspaces in the current decade (e.g. ws 23 + 5 → 25); 0 = 10.
+local KEYPAD_CODES = { 87, 88, 89, 83, 84, 85, 79, 80, 81, 90 } -- KP 1..9, 0
+local function targetWorkspace(n)
+    return tostring(math.floor((hl.get_active_workspace().id - 1) / 10) * 10 + n)
+end
+
+for n = 1, 10 do
+    hl.bind("SUPER + ALT + code:" .. (9 + n), function()
+        hl.dispatch(hl.dsp.window.move({ workspace = targetWorkspace(n), follow = false }))
+    end) -- [hidden]
+end
 -- keypad numbers
-hl.bind("SUPER + ALT + code:87", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 1")) -- [hidden]
-hl.bind("SUPER + ALT + code:88", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 2")) -- [hidden]
-hl.bind("SUPER + ALT + code:89", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 3")) -- [hidden]
-hl.bind("SUPER + ALT + code:83", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 4")) -- [hidden]
-hl.bind("SUPER + ALT + code:84", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 5")) -- [hidden]
-hl.bind("SUPER + ALT + code:85", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 6")) -- [hidden]
-hl.bind("SUPER + ALT + code:79", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 7")) -- [hidden]
-hl.bind("SUPER + ALT + code:80", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 8")) -- [hidden]
-hl.bind("SUPER + ALT + code:81", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 9")) -- [hidden]
-hl.bind("SUPER + ALT + code:90", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspacesilent 10")) -- [hidden]
+for n = 1, 10 do
+    hl.bind("SUPER + ALT + code:" .. KEYPAD_CODES[n], function()
+        hl.dispatch(hl.dsp.window.move({ workspace = targetWorkspace(n), follow = false }))
+    end) -- [hidden]
+end
 
 --
-hl.bind("SUPER + SHIFT + mouse_down", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace r-1")) -- [hidden]
-hl.bind("SUPER + SHIFT + mouse_up", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace r+1")) -- [hidden]
-hl.bind("SUPER + ALT + mouse_down", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace -1")) -- [hidden]
-hl.bind("SUPER + ALT + mouse_up", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace +1")) -- [hidden]
+hl.bind("SUPER + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "r-1" })) -- [hidden]
+hl.bind("SUPER + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "r+1" })) -- [hidden]
+hl.bind("SUPER + ALT + mouse_down", hl.dsp.window.move({ workspace = "-1" })) -- [hidden]
+hl.bind("SUPER + ALT + mouse_up", hl.dsp.window.move({ workspace = "+1" })) -- [hidden]
 
 --/# bind = Super+Shift, Page_↑/↓,,
-hl.bind("SUPER + ALT + Page_Down", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace +1")) -- [hidden]
-hl.bind("SUPER + ALT + Page_Up", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace -1")) -- [hidden]
-hl.bind("SUPER + SHIFT + Page_Down", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace r+1")) -- [hidden]
-hl.bind("SUPER + SHIFT + Page_Up", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace r-1")) -- [hidden]
-hl.bind("CTRL + SUPER + SHIFT + Right", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace r+1")) -- [hidden]
-hl.bind("CTRL + SUPER + SHIFT + Left", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace r-1")) -- [hidden]
+hl.bind("SUPER + ALT + Page_Down", hl.dsp.window.move({ workspace = "+1" })) -- [hidden]
+hl.bind("SUPER + ALT + Page_Up", hl.dsp.window.move({ workspace = "-1" })) -- [hidden]
+hl.bind("SUPER + SHIFT + Page_Down", hl.dsp.window.move({ workspace = "r+1" })) -- [hidden]
+hl.bind("SUPER + SHIFT + Page_Up", hl.dsp.window.move({ workspace = "r-1" })) -- [hidden]
+hl.bind("CTRL + SUPER + SHIFT + Right", hl.dsp.window.move({ workspace = "r+1" })) -- [hidden]
+hl.bind("CTRL + SUPER + SHIFT + Left", hl.dsp.window.move({ workspace = "r-1" })) -- [hidden]
 
-hl.bind("SUPER + ALT + S", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspacesilent special")) -- Send to scratchpad
+hl.bind("SUPER + ALT + S", hl.dsp.window.move({ workspace = "special", follow = false })) -- Send to scratchpad
 
-hl.bind("CTRL + SUPER + S", hl.dsp.exec_cmd("hyprctl dispatch togglespecialworkspace")) -- [hidden]
+hl.bind("CTRL + SUPER + S", hl.dsp.workspace.toggle_special()) -- [hidden]
 
 --#! Workspace
 -- Switching
 --/# bind = Super, Hash,,
 -- We use raw keycodes because some keyboard layouts register number keys as different chars. The codes can be verified with `wev`
-hl.bind("SUPER + code:10", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 1")) -- [hidden]
-hl.bind("SUPER + code:11", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 2")) -- [hidden]
-hl.bind("SUPER + code:12", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 3")) -- [hidden]
-hl.bind("SUPER + code:13", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 4")) -- [hidden]
-hl.bind("SUPER + code:14", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 5")) -- [hidden]
-hl.bind("SUPER + code:15", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 6")) -- [hidden]
-hl.bind("SUPER + code:16", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 7")) -- [hidden]
-hl.bind("SUPER + code:17", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 8")) -- [hidden]
-hl.bind("SUPER + code:18", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 9")) -- [hidden]
-hl.bind("SUPER + code:19", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 10")) -- [hidden]
+for n = 1, 10 do
+    hl.bind("SUPER + code:" .. (9 + n), function()
+        hl.dispatch(hl.dsp.focus({ workspace = targetWorkspace(n) }))
+    end) -- [hidden]
+end
 -- keypad numbers
-hl.bind("SUPER + code:87", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 1"), { dont_inhibit = true }) -- [hidden]
-hl.bind("SUPER + code:88", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 2"), { dont_inhibit = true }) -- [hidden]
-hl.bind("SUPER + code:89", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 3"), { dont_inhibit = true }) -- [hidden]
-hl.bind("SUPER + code:83", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 4"), { dont_inhibit = true }) -- [hidden]
-hl.bind("SUPER + code:84", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 5"), { dont_inhibit = true }) -- [hidden]
-hl.bind("SUPER + code:85", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 6"), { dont_inhibit = true }) -- [hidden]
-hl.bind("SUPER + code:79", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 7"), { dont_inhibit = true }) -- [hidden]
-hl.bind("SUPER + code:80", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 8"), { dont_inhibit = true }) -- [hidden]
-hl.bind("SUPER + code:81", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 9"), { dont_inhibit = true }) -- [hidden]
-hl.bind("SUPER + code:90", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/workspace_action.sh workspace 10"), { dont_inhibit = true }) -- [hidden]
+for n = 1, 10 do
+    hl.bind("SUPER + code:" .. KEYPAD_CODES[n], function()
+        hl.dispatch(hl.dsp.focus({ workspace = targetWorkspace(n) }))
+    end, { dont_inhibit = true }) -- [hidden]
+end
 
 --/# bind = Ctrl+Super, ←/→,,
-hl.bind("CTRL + SUPER + Right", hl.dsp.exec_cmd("hyprctl dispatch workspace r+1")) -- [hidden]
-hl.bind("CTRL + SUPER + Left", hl.dsp.exec_cmd("hyprctl dispatch workspace r-1")) -- [hidden]
+hl.bind("CTRL + SUPER + Right", hl.dsp.focus({ workspace = "r+1" })) -- [hidden]
+hl.bind("CTRL + SUPER + Left", hl.dsp.focus({ workspace = "r-1" })) -- [hidden]
 --/# bind = Ctrl+Super+Alt, ←/→,,
-hl.bind("CTRL + SUPER + ALT + Right", hl.dsp.exec_cmd("hyprctl dispatch workspace m+1")) -- [hidden]
-hl.bind("CTRL + SUPER + ALT + Left", hl.dsp.exec_cmd("hyprctl dispatch workspace m-1")) -- [hidden]
+hl.bind("CTRL + SUPER + ALT + Right", hl.dsp.focus({ workspace = "m+1" })) -- [hidden]
+hl.bind("CTRL + SUPER + ALT + Left", hl.dsp.focus({ workspace = "m-1" })) -- [hidden]
 --/# bind = Super, Page_↑/↓,,
-hl.bind("SUPER + Page_Down", hl.dsp.exec_cmd("hyprctl dispatch workspace +1")) -- [hidden]
-hl.bind("SUPER + Page_Up", hl.dsp.exec_cmd("hyprctl dispatch workspace -1")) -- [hidden]
-hl.bind("CTRL + SUPER + Page_Down", hl.dsp.exec_cmd("hyprctl dispatch workspace r+1")) -- [hidden]
-hl.bind("CTRL + SUPER + Page_Up", hl.dsp.exec_cmd("hyprctl dispatch workspace r-1")) -- [hidden]
+hl.bind("SUPER + Page_Down", hl.dsp.focus({ workspace = "+1" })) -- [hidden]
+hl.bind("SUPER + Page_Up", hl.dsp.focus({ workspace = "-1" })) -- [hidden]
+hl.bind("CTRL + SUPER + Page_Down", hl.dsp.focus({ workspace = "r+1" })) -- [hidden]
+hl.bind("CTRL + SUPER + Page_Up", hl.dsp.focus({ workspace = "r-1" })) -- [hidden]
 --/# bind = Super, Scroll ↑/↓,,
-hl.bind("SUPER + mouse_up", hl.dsp.exec_cmd("hyprctl dispatch workspace +1")) -- [hidden]
-hl.bind("SUPER + mouse_down", hl.dsp.exec_cmd("hyprctl dispatch workspace -1")) -- [hidden]
-hl.bind("CTRL + SUPER + mouse_up", hl.dsp.exec_cmd("hyprctl dispatch workspace r+1")) -- [hidden]
-hl.bind("CTRL + SUPER + mouse_down", hl.dsp.exec_cmd("hyprctl dispatch workspace r-1")) -- [hidden]
+hl.bind("SUPER + mouse_up", hl.dsp.focus({ workspace = "+1" })) -- [hidden]
+hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "-1" })) -- [hidden]
+hl.bind("CTRL + SUPER + mouse_up", hl.dsp.focus({ workspace = "r+1" })) -- [hidden]
+hl.bind("CTRL + SUPER + mouse_down", hl.dsp.focus({ workspace = "r-1" })) -- [hidden]
 --# Special
-hl.bind("SUPER + S", hl.dsp.exec_cmd("hyprctl dispatch togglespecialworkspace")) -- Toggle scratchpad
-hl.bind("SUPER + mouse:275", hl.dsp.exec_cmd("hyprctl dispatch togglespecialworkspace")) -- [hidden]
-hl.bind("CTRL + SUPER + BracketLeft", hl.dsp.exec_cmd("hyprctl dispatch workspace -1")) -- [hidden]
-hl.bind("CTRL + SUPER + BracketRight", hl.dsp.exec_cmd("hyprctl dispatch workspace +1")) -- [hidden]
-hl.bind("CTRL + SUPER + Up", hl.dsp.exec_cmd("hyprctl dispatch workspace r-5")) -- [hidden]
-hl.bind("CTRL + SUPER + Down", hl.dsp.exec_cmd("hyprctl dispatch workspace r+5")) -- [hidden]
+hl.bind("SUPER + S", hl.dsp.workspace.toggle_special()) -- Toggle scratchpad
+hl.bind("SUPER + mouse:275", hl.dsp.workspace.toggle_special()) -- [hidden]
+hl.bind("CTRL + SUPER + BracketLeft", hl.dsp.focus({ workspace = "-1" })) -- [hidden]
+hl.bind("CTRL + SUPER + BracketRight", hl.dsp.focus({ workspace = "+1" })) -- [hidden]
+hl.bind("CTRL + SUPER + Up", hl.dsp.focus({ workspace = "r-5" })) -- [hidden]
+hl.bind("CTRL + SUPER + Down", hl.dsp.focus({ workspace = "r+5" })) -- [hidden]
 
 --#! Virtual machines
-hl.bind("SUPER + ALT + F1", hl.dsp.exec_cmd("notify-send 'Entered Virtual Machine submap' 'Keybinds disabled. Hit Super+Alt+F1 to escape' -a 'Hyprland' && hyprctl dispatch submap virtual-machine")) -- Disable keybinds
+hl.bind("SUPER + ALT + F1", function()
+    hl.dispatch(hl.dsp.exec_cmd("notify-send 'Entered Virtual Machine submap' 'Keybinds disabled. Hit Super+Alt+F1 to escape' -a 'Hyprland'"))
+    hl.dispatch(hl.dsp.submap("virtual-machine"))
+end) -- Disable keybinds
 
 -- Virtual-machine passthrough submap.
 hl.define_submap("virtual-machine", function()
-hl.bind("SUPER + ALT + F1", hl.dsp.exec_cmd("notify-send 'Exited Virtual Machine submap' 'Keybinds re-enabled' -a 'Hyprland' && hyprctl dispatch submap global")) -- [hidden]
+    hl.bind("SUPER + ALT + F1", function()
+        hl.dispatch(hl.dsp.exec_cmd("notify-send 'Exited Virtual Machine submap' 'Keybinds re-enabled' -a 'Hyprland'"))
+        hl.dispatch(hl.dsp.submap("global"))
+    end) -- [hidden]
 end)
 
 
@@ -269,4 +261,4 @@ hl.bind("CTRL + SHIFT + Escape", hl.dsp.exec_cmd("~/.config/hypr/hyprland/script
 
 -- Cursed stuff
 --# Make window not amogus large
-hl.bind("CTRL + SUPER + Backslash", hl.dsp.exec_cmd("hyprctl dispatch resizeactive exact 640 480")) -- [hidden]
+hl.bind("CTRL + SUPER + Backslash", hl.dsp.window.resize({ x = 640, y = 480 })) -- [hidden]

@@ -17,7 +17,7 @@ hl.unbind("CTRL + SUPER + P")
 hl.bind("SUPER + ALT + W", hl.dsp.global("quickshell:panelFamilyCycle")) -- Cycle panel family
 
 hl.unbind("SUPER + Q")
-hl.bind("SUPER + Escape", hl.dsp.exec_cmd("hyprctl dispatch killactive")) -- Close
+hl.bind("SUPER + Escape", hl.dsp.window.close()) -- Close
 
 hl.unbind("SUPER + W")
 hl.bind("SUPER + W", hl.dsp.exec_cmd("~/.config/hypr/hyprland/scripts/launch_first_available.sh \"flatpak run app.zen_browser.zen\"")) -- Browser
@@ -39,7 +39,7 @@ hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd("/home/Qui/.local/bin/work-website"
 hl.bind("SUPER + SHIFT + F", hl.dsp.exec_cmd("/home/Qui/.local/bin/work-app")) -- FitMedik mobile app environment
 
 -- Keyboard navigation
-hl.bind("CTRL + SUPER + H", hl.dsp.exec_cmd("hyprctl dispatch workspace r-1")) -- Previous workspace
-hl.bind("CTRL + SUPER + L", hl.dsp.exec_cmd("hyprctl dispatch workspace r+1")) -- Next workspace
-hl.bind("CTRL + SUPER + SHIFT + H", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace r-1")) -- Move window to previous workspace
-hl.bind("CTRL + SUPER + SHIFT + L", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace r+1")) -- Move window to next workspace
+hl.bind("CTRL + SUPER + H", hl.dsp.focus({ workspace = "r-1" })) -- Previous workspace
+hl.bind("CTRL + SUPER + L", hl.dsp.focus({ workspace = "r+1" })) -- Next workspace
+hl.bind("CTRL + SUPER + SHIFT + H", hl.dsp.window.move({ workspace = "r-1" })) -- Move window to previous workspace
+hl.bind("CTRL + SUPER + SHIFT + L", hl.dsp.window.move({ workspace = "r+1" })) -- Move window to next workspace
