@@ -1,0 +1,2 @@
+-- nwg-displays Lua output. Keep this module importable.
+-- nwg-displays may replace this file with generated workspace rules.
